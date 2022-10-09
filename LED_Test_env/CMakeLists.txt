@@ -20,6 +20,8 @@ set(PROJECT_SOURCES
         window.cpp
         strip.h
         strip.cpp
+        wave.h
+        wave.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

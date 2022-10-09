@@ -12,20 +12,28 @@ struct led{
 
 };
 
-class strip : public QWidget
+class Strip : public QWidget
 {
     Q_OBJECT
 public:
-    strip(int maxLed, QWidget *parent = nullptr);
+    Strip(int maxLed, QWidget *parent = nullptr);
 
     QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
+
+    void resetStrip();  //Sets all LEDs to White
+
+    int getMaxLeds(){ return numLeds; }
 
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
     int numLeds;
+    const int ledXSpaceOffset = 15;
+    const int ledWidth = 5;
+    const int ledHeight = 5;
+    QPoint startCoord = QPoint(5, 5);
     QList<led> ledStrip;
 
 };

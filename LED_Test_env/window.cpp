@@ -4,13 +4,13 @@
 
 Window::Window()
 {
-    ledStrip = new strip(100);
+    ledStrip = new Strip(24);
     //ledStrip->show();
 
     drawBtn = new QPushButton(this);
     drawBtn->setText("Testing alloooooo");
 
-    connect(drawBtn, &QPushButton::clicked, this, QOverload<>::of(&strip::update));
+    connect(drawBtn, &QPushButton::clicked, this, QOverload<>::of(&Strip::update));
 
     QBoxLayout *main = new QBoxLayout(QBoxLayout::LeftToRight);
     main->addWidget(ledStrip);

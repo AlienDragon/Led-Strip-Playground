@@ -10,6 +10,7 @@ class QBoxLayout;
 QT_END_NAMESPACE
 
 #include "strip.h"
+#include "wave.h"
 
 
 class Window : public QWidget
@@ -19,7 +20,8 @@ public:
     Window();
 
 private:
-    strip *ledStrip;
+    Strip *ledStrip;
+    Wave *testWave;
     QPushButton *drawBtn;
     //QBoxLayout *mainLayout;
     //QTimer *timer;

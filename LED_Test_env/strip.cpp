@@ -1,25 +1,31 @@
 #include "strip.h"
 #include <QPainter>
 #include <QTimer>
-strip::strip(int maxLed, QWidget *parent)
+Strip::Strip(int maxLed, QWidget *parent)
     : QWidget(parent)
 {
     numLeds = maxLed;
     ledStrip = QList<led>(numLeds);
 }
 
-QSize strip::minimumSizeHint()const{
+QSize Strip::minimumSizeHint()const{
     return QSize(100, 100);
 }
 
-QSize strip::sizeHint() const
+QSize Strip::sizeHint() const
 {
     return QSize(400, 200);
 }
 
-void strip::paintEvent(QPaintEvent *event){
+void Strip::resetStrip(){
 
-    QRect rect(5,5,10,10);
+}
+
+void Strip::paintEvent(QPaintEvent *event){
+
+    QRect rect(startCoord.x(),startCoord.y(),
+               startCoord.x() + ledWidth,
+               startCoord.y() + ledHeight);
 
     QPainter painter(this);
 
@@ -32,7 +38,7 @@ void strip::paintEvent(QPaintEvent *event){
         painter.setBrush(QColor(ledStrip[i].r,
                                 ledStrip[i].g,
                                 ledStrip[i].b));
-        painter.translate(15, 0);
+        painter.translate(ledXSpaceOffset, 0);
         painter.drawRect(rect);
     }
 

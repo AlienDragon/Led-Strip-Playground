@@ -14,13 +14,16 @@ Window::Window()
     drawBtn = new QPushButton(this);
     drawBtn->setText("Start Test Wave");
 
+    stopBtn = new QPushButton(this);
+    stopBtn->setText("Stop Test Wave");
+
     connect(drawBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::startWave));
+    connect(stopBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::stopWave));
 
     QBoxLayout *main = new QBoxLayout(QBoxLayout::LeftToRight);
     main->addWidget(ledStrip);
     main->addWidget(drawBtn);
-
-
+    main->addWidget(stopBtn);
 
     setLayout(main);
     setWindowTitle(tr("Led Strip Simulator"));

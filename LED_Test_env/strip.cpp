@@ -36,18 +36,19 @@ void Strip::setStripTo(QColor stripCol)
 void Strip::setLed(int index, QColor newCol)
 {
     ledStrip[index].r = newCol.red();
-    ledStrip[index].b = newCol.blue();
     ledStrip[index].g = newCol.green();
+    ledStrip[index].b = newCol.blue();
 }
 
 void Strip::setLed(int index, int nr, int ng, int nb)
 {
     ledStrip[index].r = nr;
-    ledStrip[index].b = ng;
-    ledStrip[index].g = nb;
+    ledStrip[index].g = ng;
+    ledStrip[index].b = nb;
 }
 
-void Strip::paintEvent(QPaintEvent *event){
+void Strip::paintEvent(QPaintEvent *event)
+{
     QRect rect(startCoord.x(),startCoord.y(),
                startCoord.x() + ledWidth,
                startCoord.y() + ledHeight);
@@ -55,7 +56,8 @@ void Strip::paintEvent(QPaintEvent *event){
     QPainter painter(this);
 
     // --Testing-- Subtract 25 from R value every repaint
-    //if(ledStrip[0].r-25 >= 0){
+    //if(ledStrip[0].r-25 >= 0)
+    //{
     //    ledStrip[0].r -= 25;
     //}
 

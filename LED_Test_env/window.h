@@ -23,6 +23,7 @@ private:
     Strip *ledStrip;
     Wave *testWave;
     QPushButton *drawBtn;
+    QPushButton *stopBtn;
     //QBoxLayout *mainLayout;
     //QTimer *timer;
 private:

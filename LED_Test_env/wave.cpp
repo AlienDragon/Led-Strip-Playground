@@ -24,52 +24,48 @@ void Wave::stopWave()
 
 void Wave::stepWave()
 {
-    if(ledIndex < leds->getMaxLeds())
+    //int midPoint = (width + 2 - 1)/2;   //Ceiling
+    removeTrail();      //reset strip
+
+    if(ledIndex-width < leds->getMaxLeds())
     {
-        int newR = leds->ledStrip[ledIndex].r * reduction;
-        int newG = leds->ledStrip[ledIndex].b * reduction;
-        int newB = leds->ledStrip[ledIndex].g * reduction;
-
-        leds->setLed(ledIndex, newR, newG, newB);
-
-        removeTrail();
-
-        leds->update();
-
-        if(ledIndex+1 < leds->getMaxLeds())
-        {
-            ledIndex++;
-        }
-        else
-        {
-            ledIndex=0;
-        }
+        ledIndex++;
     }
+    else
+    {
+        ledIndex=0;
+    }
+
+    for(int i = ledIndex-width; i < ledIndex+width; i++)
+    {
+        if(i >= 0 && i < leds->getMaxLeds())
+        {
+            int newR = leds->ledStrip[i].r * reduction;
+            int newG = leds->ledStrip[i].g * reduction;
+            int newB = leds->ledStrip[i].b * reduction;
+
+            leds->setLed(i, newR, newG, newB);
+
+         }
+    }
+
+    leds->update();
 }
 
 void Wave::removeTrail()
 {
-    int midPoint = (width + 2 - 1)/2;   //Ceiling
-    int trailIndex = ledIndex - midPoint;
-    if(trailIndex >= 0)
-    {
-        int newR = leds->ledStrip[ledIndex].r / reduction;
-        int newG = leds->ledStrip[ledIndex].g / reduction;
-        int newB = leds->ledStrip[ledIndex].b / reduction;
+    //int midPoint = (width + 2 - 1)/2;   //Ceiling
+    //int trailIndex = ledIndex - width;
 
-        leds->setLed(trailIndex, newR, newG, newB);
-    }
-
-    /*
-    for(int i = trailIndex; i <= midPoint; i++)
+    for(int i = ledIndex - width; i  < ledIndex+width; i++)
     {
-        if(i >= 0)
+        if(i >= 0 && i < leds->getMaxLeds())
         {
-            int newR = leds->ledStrip[ledIndex].r / reduction;
-            int newG = leds->ledStrip[ledIndex].b / reduction;
-            int newB = leds->ledStrip[ledIndex].g / reduction;
+            int newR = leds->ledStrip[i].r / reduction;
+            int newG = leds->ledStrip[i].g / reduction;
+            int newB = leds->ledStrip[i].b / reduction;
 
-            leds->setLed(i, QColor(newR, newG, newB));
+            leds->setLed(i, newR, newG, newB);
         }
-    }*/
+    }
 }

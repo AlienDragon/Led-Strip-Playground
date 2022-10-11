@@ -26,7 +26,7 @@ private:
     //QBoxLayout *mainLayout;
     //QTimer *timer;
 private:
-    void repaintStrip();
+
 
 };
 

@@ -17,9 +17,14 @@ public:
 
 private:
     QTimer *testT;
-    int ledIndex;
-    int timerInterval;
+    int ledIndex = 0;
+    int timerInterval = 0;
     Strip *leds;
+
+    int width = 8;         //Total area of the strip will be affected
+    float reduction = 0.5; //The 'depth' of the wave 0-1 -> 0%(Off) to 100%(No change to light)
+
+    void removeTrail();
 };
 
 #endif // WAVE_H

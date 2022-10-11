@@ -4,13 +4,17 @@
 
 Window::Window()
 {
+
     ledStrip = new Strip(24);
-    //ledStrip->show();
+    ledStrip->setStripTo(QColor(255, 0, 0));
+
+    testWave = new Wave(500, ledStrip);
+
 
     drawBtn = new QPushButton(this);
-    drawBtn->setText("Testing alloooooo");
+    drawBtn->setText("Start Test Wave");
 
-    connect(drawBtn, &QPushButton::clicked, this, QOverload<>::of(&Strip::update));
+    connect(drawBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::startWave));
 
     QBoxLayout *main = new QBoxLayout(QBoxLayout::LeftToRight);
     main->addWidget(ledStrip);
@@ -20,16 +24,4 @@ Window::Window()
 
     setLayout(main);
     setWindowTitle(tr("Led Strip Simulator"));
-
-
-    //QTimer *timer = new QTimer(this);
-    //timer->timeout();
-    //QObject::connect(timer, &QTimer::timeout, this, ledStrip->repaint());
-    //QObject::connect(timer, &QTimer::timeout,ledStrip->repaint());
-    //connect(timer, &QTimer::timeout, this, ledStrip->update());
-    //timer->start(1000);
-}
-
-void Window::repaintStrip(){
-    ledStrip->repaint();
 }

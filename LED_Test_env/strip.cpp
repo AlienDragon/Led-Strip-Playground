@@ -8,7 +8,8 @@ Strip::Strip(int maxLed, QWidget *parent)
     ledStrip = QList<led>(numLeds);
 }
 
-QSize Strip::minimumSizeHint()const{
+QSize Strip::minimumSizeHint()const
+{
     return QSize(100, 100);
 }
 
@@ -17,12 +18,36 @@ QSize Strip::sizeHint() const
     return QSize(400, 200);
 }
 
-void Strip::resetStrip(){
+void Strip::resetStrip()
+{
 
 }
 
-void Strip::paintEvent(QPaintEvent *event){
+void Strip::setStripTo(QColor stripCol)
+{
+    for(int i = 0; i < numLeds; i++)
+    {
+        ledStrip[i].r = stripCol.red();
+        ledStrip[i].b = stripCol.blue();
+        ledStrip[i].g = stripCol.green();
+    }
+}
 
+void Strip::setLed(int index, QColor newCol)
+{
+    ledStrip[index].r = newCol.red();
+    ledStrip[index].b = newCol.blue();
+    ledStrip[index].g = newCol.green();
+}
+
+void Strip::setLed(int index, int nr, int ng, int nb)
+{
+    ledStrip[index].r = nr;
+    ledStrip[index].b = ng;
+    ledStrip[index].g = nb;
+}
+
+void Strip::paintEvent(QPaintEvent *event){
     QRect rect(startCoord.x(),startCoord.y(),
                startCoord.x() + ledWidth,
                startCoord.y() + ledHeight);
@@ -34,7 +59,8 @@ void Strip::paintEvent(QPaintEvent *event){
     //    ledStrip[0].r -= 25;
     //}
 
-    for(int i =0; i < numLeds-1; i++){
+    for(int i =0; i < numLeds-1; i++)
+    {
         painter.setBrush(QColor(ledStrip[i].r,
                                 ledStrip[i].g,
                                 ledStrip[i].b));

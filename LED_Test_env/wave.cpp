@@ -25,7 +25,19 @@ void Wave::stopWave()
 void Wave::stepWave()
 {
     //int midPoint = (width + 2 - 1)/2;   //Ceiling
-    removeTrail();      //reset strip
+
+
+    for(int i = ledIndex-width; i <= ledIndex+width; i++)
+    {
+        if(i >= 0 && i < leds->getMaxLeds())
+        {
+            int newR = leds->ledStrip[i].r * reduction;
+            int newG = leds->ledStrip[i].g * reduction;
+            int newB = leds->ledStrip[i].b * reduction;
+
+            leds->setLed(i, newR, newG, newB);
+         }
+    }
 
     if(ledIndex-width < leds->getMaxLeds())
     {
@@ -35,20 +47,7 @@ void Wave::stepWave()
     {
         ledIndex=0;
     }
-
-    for(int i = ledIndex-width; i < ledIndex+width; i++)
-    {
-        if(i >= 0 && i < leds->getMaxLeds())
-        {
-            int newR = leds->ledStrip[i].r * reduction;
-            int newG = leds->ledStrip[i].g * reduction;
-            int newB = leds->ledStrip[i].b * reduction;
-
-            leds->setLed(i, newR, newG, newB);
-
-         }
-    }
-
+    removeTrail();      //reset strip
     leds->update();
 }
 
@@ -56,8 +55,8 @@ void Wave::removeTrail()
 {
     //int midPoint = (width + 2 - 1)/2;   //Ceiling
     //int trailIndex = ledIndex - width;
-
-    for(int i = ledIndex - width; i  < ledIndex+width; i++)
+    int test = ledIndex - width;
+    for(int i = ledIndex - width; i  < ledIndex; i++)
     {
         if(i >= 0 && i < leds->getMaxLeds())
         {

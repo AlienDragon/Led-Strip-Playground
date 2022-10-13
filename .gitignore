@@ -405,4 +405,4 @@ MigrationBackup/
 .ionide/
 
 # Out folder from VS builds
-.out/
+out/

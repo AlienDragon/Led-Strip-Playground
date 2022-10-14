@@ -10,6 +10,7 @@ Window::Window()
 
     testWave = new Wave(500, ledStrip);
 
+    testWave2 = new Wave(800, ledStrip);
 
     drawBtn = new QPushButton(this);
     drawBtn->setText("Start Test Wave");
@@ -18,6 +19,7 @@ Window::Window()
     stopBtn->setText("Stop Test Wave");
 
     connect(drawBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::startWave));
+    connect(drawBtn, &QPushButton::clicked, testWave2, QOverload<>::of(&Wave::startWave));
     connect(stopBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::stopWave));
 
     QBoxLayout *main = new QBoxLayout(QBoxLayout::LeftToRight);

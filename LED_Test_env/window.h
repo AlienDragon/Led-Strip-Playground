@@ -22,6 +22,7 @@ public:
 private:
     Strip *ledStrip;
     Wave *testWave;
+    Wave *testWave2;
     QPushButton *drawBtn;
     QPushButton *stopBtn;
     //QBoxLayout *mainLayout;

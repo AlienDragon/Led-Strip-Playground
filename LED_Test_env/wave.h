@@ -21,10 +21,12 @@ private:
     int timerInterval = 0;
     Strip *leds;
 
-    int width = 1;         //Total area of the strip will be affected
+    int width = 2;         //Total area of the strip will be affected
     float reduction = 0.5; //The 'depth' of the wave 0-1 -> 0%(Off) to 100%(No change to light)
 
-    void removeTrail();
+    void reset();
+    void drawWave();
+    void incrementIndex();
 };
 
 #endif // WAVE_H

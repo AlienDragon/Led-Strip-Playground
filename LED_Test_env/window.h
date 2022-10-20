@@ -11,7 +11,7 @@ QT_END_NAMESPACE
 
 #include "strip.h"
 #include "wave.h"
-
+#include "sidebar.h"
 
 class Window : public QWidget
 {
@@ -20,6 +20,7 @@ public:
     Window();
 
 private:
+    Sidebar *sBar;
     Strip *ledStrip;
     Wave *testWave;
     Wave *testWave2;

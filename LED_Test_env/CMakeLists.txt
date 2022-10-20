@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         strip.cpp
         wave.h
         wave.cpp
+        sidebar.h
+        sidebar.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

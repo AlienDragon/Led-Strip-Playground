@@ -18,11 +18,14 @@ Window::Window()
     stopBtn = new QPushButton(this);
     stopBtn->setText("Stop Test Wave");
 
+    sBar = new Sidebar(this);
+
     connect(drawBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::startWave));
     connect(drawBtn, &QPushButton::clicked, testWave2, QOverload<>::of(&Wave::startWave));
     connect(stopBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::stopWave));
 
     QBoxLayout *main = new QBoxLayout(QBoxLayout::LeftToRight);
+    main->addWidget(sBar);
     main->addWidget(ledStrip);
     main->addWidget(drawBtn);
     main->addWidget(stopBtn);

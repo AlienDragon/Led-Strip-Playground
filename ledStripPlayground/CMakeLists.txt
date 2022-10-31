@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(LED_Test_env VERSION 0.1 LANGUAGES CXX)
+project(ledStripPlayground VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -16,42 +16,37 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        window.h
-        window.cpp
-        strip.h
-        strip.cpp
-        wave.h
-        wave.cpp
-        sidebar.h
-        sidebar.cpp
+        mainwindow.cpp
+        mainwindow.h
+        mainwindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(LED_Test_env
+    qt_add_executable(ledStripPlayground
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET LED_Test_env APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET ledStripPlayground APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(LED_Test_env SHARED
+        add_library(ledStripPlayground SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(LED_Test_env
+        add_executable(ledStripPlayground
             ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_link_libraries(LED_Test_env PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(ledStripPlayground PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-set_target_properties(LED_Test_env PROPERTIES
+set_target_properties(ledStripPlayground PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -60,5 +55,5 @@ set_target_properties(LED_Test_env PROPERTIES
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(LED_Test_env)
+    qt_finalize_executable(ledStripPlayground)
 endif()

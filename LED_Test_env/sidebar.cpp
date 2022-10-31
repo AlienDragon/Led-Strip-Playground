@@ -15,6 +15,8 @@ Sidebar::Sidebar(QWidget *parent)
     setLayout(layout);
 
     QPushButton *btn = new QPushButton(this);
+    QPushButton *btn2 = new QPushButton(this);
+    layout->addWidget(btn2);
     layout->addWidget(btn);
 
 

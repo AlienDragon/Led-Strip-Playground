@@ -20,6 +20,7 @@ Window::Window()
 
     sBar = new Sidebar(this);
 
+
     connect(drawBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::startWave));
     connect(drawBtn, &QPushButton::clicked, testWave2, QOverload<>::of(&Wave::startWave));
     connect(stopBtn, &QPushButton::clicked, testWave, QOverload<>::of(&Wave::stopWave));

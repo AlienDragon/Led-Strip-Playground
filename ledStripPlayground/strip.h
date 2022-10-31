@@ -16,7 +16,8 @@ class Strip : public QObject
     Q_OBJECT
 public:
     explicit Strip(int ledCount, QObject *parent = nullptr);
-    QList<led> ledStrip;
+    QList<led> ledStrip;        //maintains original colours unless changed by the user. Also used for resetting of strip each frame
+    QList<led> mutableLedStrip; //modified by any animations applied to it
     void resetStrip();  //Sets all LEDs to White
     void setStripTo(QColor stripCol);
     int getMaxLeds(){ return ledStrip.length(); }

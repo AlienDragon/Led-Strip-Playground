@@ -19,6 +19,10 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        strip.h
+        strip.cpp
+        stripviewer.h
+        stripviewer.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

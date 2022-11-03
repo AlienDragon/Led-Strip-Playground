@@ -5,7 +5,7 @@ Strip::Strip(int ledCount, QObject *parent)
     : QObject{parent}
 {
     ledStrip = QList<led>(ledCount);
-    mutableLedStrip = QList<led>(ledCount);
+    mLedStrip = QList<led>(ledCount);
 }
 
 
@@ -13,9 +13,9 @@ void Strip::resetStrip()
 {
     for(int i = 0; i < ledStrip.length(); i++)
     {
-        mutableLedStrip[i].r = ledStrip[i].r;
-        mutableLedStrip[i].b = ledStrip[i].b;
-        mutableLedStrip[i].g = ledStrip[i].g;
+        mLedStrip[i].r = ledStrip[i].r;
+        mLedStrip[i].b = ledStrip[i].b;
+        mLedStrip[i].g = ledStrip[i].g;
     }
 }
 

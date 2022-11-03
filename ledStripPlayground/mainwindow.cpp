@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    view = new StripViewer(this);
+    view = new StripViewer(200, 200, this);
     this->layout()->addWidget(view);
 }
 
